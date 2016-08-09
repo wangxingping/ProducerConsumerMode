@@ -65,7 +65,7 @@ namespace ProducerConsumerMode
                     if (ConsumerGoodsQueue.Count > 0)
                     {
                         goods = ConsumerGoodsQueue.Dequeue();
-                        //Monitor.Pulse(Producer.LockObject);
+                        //Monitor.Pulse(Program.LockObject);
                         if (goods == null)
                         {
                             continue;
