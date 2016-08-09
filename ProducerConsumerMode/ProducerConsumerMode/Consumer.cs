@@ -1,5 +1,4 @@
-﻿using System;
-// ******************************************************
+﻿// ******************************************************
 // 文件名（FileName）:               Consumer.cs  
 // 功能描述（Description）:          此文件用于定义读取数据。
 // 数据表（Tables）:                 nothing
@@ -7,6 +6,7 @@
 // 日期（Create Date）:              2016-08-04
 // 修改记录（Revision History）:     nothing
 // ******************************************************
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -58,7 +58,7 @@ namespace ProducerConsumerMode
         {
             bool flage;//用于退出循环
             Goods goods;
-            lock (Producer.LockObject)
+            lock (Program.LockObject)
             {
                 while (true)
                 {
@@ -74,7 +74,7 @@ namespace ProducerConsumerMode
                     }
                     else
                     {
-                        flage = Monitor.Wait(Producer.LockObject, 1000);
+                        flage = Monitor.Wait(Program.LockObject, 1000);
                         if (!flage)
                         {
                             return;

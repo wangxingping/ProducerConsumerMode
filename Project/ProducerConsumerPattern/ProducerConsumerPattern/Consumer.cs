@@ -1,43 +1,46 @@
 ﻿// ******************************************************
-// 文件名（FileName）:               Producer.cs  
-// 功能描述（Description）:          此文件用于定义写数据类。
+// 文件名（FileName）:               Consumer.cs  
+// 功能描述（Description）:          此文件用于定义读取数据。
 // 数据表（Tables）:                 nothing
 // 作者（Author）:                   wangxingping
 // 日期（Create Date）:              2016-08-04
 // 修改记录（Revision History）:     nothing
 // ******************************************************
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Threading;
 
-namespace ProducerConsumerMode
+namespace ProducerConsumerPattern
 {
-    public class Producer
+    /// <summary>
+    /// 消费者类
+    /// </summary>
+    public class Consumer
     {
         /// <summary>
         /// 数据存放的队列
         /// </summary>
-        private Queue<Goods> ProductsQueue;
+        private CacheQueue<Goods> ConsumerGoodsQueue;
 
         /// <summary>
-        /// 工作线程
+        /// 消费线程
         /// </summary>
         public Thread thread;
 
         /// <summary>
-        /// 次数
+        /// 加进队列的次数
         /// </summary>
-        private int Number;
+        int Number;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="goods"></param>
         /// <param name="number"></param>
-        public Producer(Queue<Goods> productsQueue, int number)
+        public Consumer(CacheQueue<Goods> productsQueue, int number)
         {
-            this.ProductsQueue = productsQueue;
-            this.thread = new Thread(new ThreadStart(Produce));
+            this.ConsumerGoodsQueue = productsQueue;
+            this.thread = new Thread(new ThreadStart(Consume));
             if (number <= 0)
             {
                 this.Number = 1;
@@ -49,20 +52,21 @@ namespace ProducerConsumerMode
         }
 
         /// <summary>
-        ///生产函数
+        ///消费的函数
         /// </summary>
-        public void Produce()
+        public void Consume()
         {
-            Goods goods;
             for (int i = 0; i < Number; i++)
             {
-                goods = new Goods(i.ToString(), "wang" + i.ToString(), i);
-                //添加
-                lock (Program.LockObject)
+                if (ConsumerGoodsQueue == null)
                 {
-                    ProductsQueue.Enqueue(goods);
-                    Console.WriteLine(String.Format("{0}, 生产的物品：,产品名字：{1},生产者名字{2},卖价{3}", thread.Name, goods.Name, goods.Creator, goods.SellPrice));
-                    Monitor.Pulse(Program.LockObject);
+                    return;
+                }
+                Goods product;
+                var str = ConsumerGoodsQueue.TryDequeue(out product);
+                if (str)
+                {
+                    Console.WriteLine(thread.Name + "消费的物品：" + "产品名字:" + product.Name + " 生产者名字：" + product.Creator + "卖价:" + product.SellPrice);
                 }
             }
         }

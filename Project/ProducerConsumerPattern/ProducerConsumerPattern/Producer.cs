@@ -3,21 +3,24 @@
 // 功能描述（Description）:          此文件用于定义写数据类。
 // 数据表（Tables）:                 nothing
 // 作者（Author）:                   wangxingping
-// 日期（Create Date）:              2016-08-04
+// 日期（Create Date）:              2016-08-02
 // 修改记录（Revision History）:     nothing
 // ******************************************************
-using System;
-using System.Collections.Generic;
-using System.Threading;
 
-namespace ProducerConsumerMode
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+namespace ProducerConsumerPattern
 {
+    /// <summary>
+    /// 生产者类
+    /// </summary>
     public class Producer
     {
         /// <summary>
         /// 数据存放的队列
         /// </summary>
-        private Queue<Goods> ProductsQueue;
+        private CacheQueue<Goods> ProductsQueue;
 
         /// <summary>
         /// 工作线程
@@ -34,7 +37,7 @@ namespace ProducerConsumerMode
         /// </summary>
         /// <param name="goods"></param>
         /// <param name="number"></param>
-        public Producer(Queue<Goods> productsQueue, int number)
+        public Producer(CacheQueue<Goods> productsQueue, int number)
         {
             this.ProductsQueue = productsQueue;
             this.thread = new Thread(new ThreadStart(Produce));
@@ -58,12 +61,8 @@ namespace ProducerConsumerMode
             {
                 goods = new Goods(i.ToString(), "wang" + i.ToString(), i);
                 //添加
-                lock (Program.LockObject)
-                {
-                    ProductsQueue.Enqueue(goods);
-                    Console.WriteLine(String.Format("{0}, 生产的物品：,产品名字：{1},生产者名字{2},卖价{3}", thread.Name, goods.Name, goods.Creator, goods.SellPrice));
-                    Monitor.Pulse(Program.LockObject);
-                }
+                ProductsQueue.Enqueue(goods);
+                Console.WriteLine(thread.Name + "生产的物品：" + "产品名字:" + goods.Name + "生产者名字：" + goods.Creator + "卖价:" + goods.SellPrice);
             }
         }
     }

@@ -1,0 +1,12 @@
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.exe.config
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.exe
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.pdb
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.exe
+C:\Users\wang\Desktop\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.pdb
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.exe.config
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.exe
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.pdb
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.exe
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\bin\Debug\ProducerConsumerPattern.pdb
+C:\Users\wang\Desktop\Project\ProducerConsumerPattern\ProducerConsumerPattern\obj\Debug\ProducerConsumerPattern.csprojResolveAssemblyReference.cache
