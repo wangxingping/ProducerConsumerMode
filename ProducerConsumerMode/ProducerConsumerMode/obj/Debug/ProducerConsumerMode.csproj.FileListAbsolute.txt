@@ -1,0 +1,6 @@
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\bin\Debug\ProducerConsumerMode.exe.config
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\bin\Debug\ProducerConsumerMode.exe
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\bin\Debug\ProducerConsumerMode.pdb
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\obj\Debug\ProducerConsumerMode.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\obj\Debug\ProducerConsumerMode.exe
+C:\Users\wang\Desktop\ProducerConsumerMode\ProducerConsumerMode\obj\Debug\ProducerConsumerMode.pdb
