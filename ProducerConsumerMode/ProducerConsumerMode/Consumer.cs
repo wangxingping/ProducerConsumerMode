@@ -20,12 +20,12 @@ namespace ProducerConsumerMode
         /// <summary>
         /// 数据存放的队列
         /// </summary>
-        private Queue<Goods> ConsumerGoodsQueue;
+        private Queue<Goods> ConsumerQueue;
 
         /// <summary>
         /// 消费线程
         /// </summary>
-        public Thread thread;
+        public Thread ConsumerThread;
 
         /// <summary>
         /// 加进队列的次数
@@ -37,10 +37,10 @@ namespace ProducerConsumerMode
         /// </summary>
         /// <param name="goods"></param>
         /// <param name="number"></param>
-        public Consumer(Queue<Goods> productsQueue, int number)
+        public Consumer(Queue<Goods> consumerQueue, int number)
         {
-            this.ConsumerGoodsQueue = productsQueue;
-            this.thread = new Thread(new ThreadStart(Consume));
+            this.ConsumerQueue = consumerQueue;
+            this.ConsumerThread = new Thread(new ThreadStart(Consume));
             if (number <= 0)
             {
                 this.Number = 1;
@@ -63,15 +63,15 @@ namespace ProducerConsumerMode
             {
                 while (true)
                 {
-                    if (ConsumerGoodsQueue.Count > 0)
+                    if (ConsumerQueue.Count > 0)
                     {
-                        goods = ConsumerGoodsQueue.Dequeue();
+                        goods = ConsumerQueue.Dequeue();
                         //Monitor.Pulse(Program.LockObject);
                         if (goods == null)
                         {
                             continue;
                         }
-                        Console.WriteLine(String.Format("{0}, 消费的物品：,产品名字：{1},生产者名字{2},卖价{3}", thread.Name, goods.Name, goods.Creator, goods.SellPrice));
+                        Console.WriteLine(String.Format("{0}, 消费的物品：,产品名字：{1},生产者名字{2},卖价{3}", ConsumerThread.Name, goods.Name, goods.Creator, goods.SellPrice));
                     }
                     else
                     {

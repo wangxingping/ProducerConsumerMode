@@ -21,26 +21,26 @@ namespace ProducerConsumerMode
         /// <summary>
         /// 公用的队列
         /// </summary>
-        private static Queue<Goods> queue = new Queue<Goods>();
+        private static Queue<Goods>  GoodsQueue = new Queue<Goods>();
 
         static void Main(string[] args)
         {
             //下面使用CacheData初始化Producer和Consumer两个类，生产和消费次数均为20次
-            Producer producerA = new Producer(queue, 5);
-            Consumer consumerA = new Consumer(queue, 5);
+            Producer producer = new Producer(GoodsQueue, 5);
+            Consumer consumer = new Consumer(GoodsQueue, 5);
 
-            producerA.thread.Name = "生产工人A线程";
-            consumerA.thread.Name = "消费者A线程";
+            producer.ProductThread.Name = "生产工人A线程";
+            consumer.ConsumerThread.Name = "消费者A线程";
 
             //生产者任务和消费者任务都已经被创建，但是没有开始执行 
             try
             {
                 //启动
-                producerA.thread.Start();
-                consumerA.thread.Start();
+                producer.ProductThread.Start();
+                consumer.ConsumerThread.Start();
 
-                producerA.thread.Join();
-                consumerA.thread.Join();
+                producer.ProductThread.Join();
+                consumer.ConsumerThread.Join();
 
                 Console.ReadLine();
             }

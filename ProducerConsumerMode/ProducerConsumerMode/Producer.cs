@@ -22,7 +22,7 @@ namespace ProducerConsumerMode
         /// <summary>
         /// 工作线程
         /// </summary>
-        public Thread thread;
+        public Thread ProductThread;
 
         /// <summary>
         /// 次数
@@ -37,7 +37,7 @@ namespace ProducerConsumerMode
         public Producer(Queue<Goods> productsQueue, int number)
         {
             this.ProductsQueue = productsQueue;
-            this.thread = new Thread(new ThreadStart(Produce));
+            this.ProductThread = new Thread(new ThreadStart(Produce));
             if (number <= 0)
             {
                 this.Number = 1;
@@ -62,7 +62,7 @@ namespace ProducerConsumerMode
                 lock (Program.ObjectLock)
                 {
                     ProductsQueue.Enqueue(goods);
-                    Console.WriteLine(String.Format("{0}, 生产的物品：,产品名字：{1},生产者名字{2},卖价{3}", thread.Name, goods.Name, goods.Creator, goods.SellPrice));
+                    Console.WriteLine(String.Format("{0}, 生产的物品：,产品名字：{1},生产者名字{2},卖价{3}", ProductThread.Name, goods.Name, goods.Creator, goods.SellPrice));
                     Monitor.Pulse(Program.ObjectLock);
                 }
             }
