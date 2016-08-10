@@ -16,7 +16,7 @@ namespace ProducerConsumerMode
         /// <summary>
         /// 锁的对象
         /// </summary>
-        public static object LockObject = new object();
+        public static object ObjectLock = new object();
 
         /// <summary>
         /// 公用的队列

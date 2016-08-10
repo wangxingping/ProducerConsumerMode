@@ -59,11 +59,11 @@ namespace ProducerConsumerMode
             {
                 goods = new Goods(i.ToString(), "wang" + i.ToString(), i);
                 //添加
-                lock (Program.LockObject)
+                lock (Program.ObjectLock)
                 {
                     ProductsQueue.Enqueue(goods);
                     Console.WriteLine(String.Format("{0}, 生产的物品：,产品名字：{1},生产者名字{2},卖价{3}", thread.Name, goods.Name, goods.Creator, goods.SellPrice));
-                    Monitor.Pulse(Program.LockObject);
+                    Monitor.Pulse(Program.ObjectLock);
                 }
             }
         }
