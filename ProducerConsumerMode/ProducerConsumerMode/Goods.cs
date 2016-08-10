@@ -3,8 +3,8 @@
 // 功能描述（Description）:          此文件主函数。
 // 数据表（Tables）:                 nothing
 // 作者（Author）:                   wangxingping
-// 日期（Create Date）:              2016-08-04
-// 修改记录（Revision History）:     nothing
+// 日期（Create Date）:              2016-08-09
+// 修改记录（Revision History）:     
 // ******************************************************
 
 namespace ProducerConsumerMode
