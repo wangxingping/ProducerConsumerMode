@@ -54,6 +54,7 @@ namespace ProducerConsumerMode
         public void Produce()
         {
             Goods goods;
+
             for (int i = 0; i < Number; i++)
             {
                 goods = new Goods(i.ToString(), "wang" + i.ToString(), i);

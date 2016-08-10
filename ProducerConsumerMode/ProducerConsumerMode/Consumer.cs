@@ -56,8 +56,9 @@ namespace ProducerConsumerMode
         /// </summary>
         public void Consume()
         {
-            bool exitLoopFlage;//用于退出循环
+            bool exitLoopFlag;//用于退出循环
             Goods goods;
+
             lock (Program.LockObject)
             {
                 while (true)
@@ -74,8 +75,8 @@ namespace ProducerConsumerMode
                     }
                     else
                     {
-                        exitLoopFlage = Monitor.Wait(Program.LockObject, 1000);
-                        if (!exitLoopFlage)
+                        exitLoopFlag = Monitor.Wait(Program.LockObject, 1000);
+                        if (!exitLoopFlag)
                         {
                             return;
                         }
